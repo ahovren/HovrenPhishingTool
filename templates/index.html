@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Tool UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Phishing Tool</div>
+        <nav class="nav">
+            <a href="#create-email">Create Email</a>
+            <a href="#results">Results</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section id="create-email" class="section">
+            <h1>Create a Phishing Email</h1>
+            <form class="phishing-form">
+                <label for="email-subject">Subject</label>
+                <input type="text" id="email-subject" name="email-subject" placeholder="Enter email subject">
+                
+                <label for="email-body">Body</label>
+                <textarea id="email-body" name="email-body" placeholder="Write the email body here"></textarea>
+                
+                <label for="recipient-email">Recipient's Email</label>
+                <input type="email" id="recipient-email" name="recipient-email" placeholder="Enter recipient's email">
+                
+                <button type="submit">Generate Phishing Email</button>
+            </form>
+        </section>
+
+        <section id="results" class="section">
+            <h2>Results</h2>
+            <div class="results-display">
+                <p>No results yet. Create an email to see the output.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Phishing Tool. For educational purposes only.</p>
+    </footer>
+</body>
+</html>
