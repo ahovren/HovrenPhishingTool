@@ -21,7 +21,7 @@ Welcome to the GitHub repository for the **Hovren Security Solutions** website! 
 - **Services**: A detailed description of the cybersecurity services provided.
 - **Contact Us**: A form to allow visitors to get in touch.
 - **Login**: Access control to specific tools and resources, such as the phishing tool.
-- **Phishing Tool**: A simulated phishing campaign creator, accessible to logged-in users only.
+- **Phishing Tool**: A simulated phishing campaign creator, accessible to logged-in and verified users only.
 
 ## Tech Stack
 - **HTML**: Structure of the web pages.
