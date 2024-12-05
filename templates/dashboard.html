@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Tool Analytics Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .description {
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+        }
+        .chart-box {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex-basis: calc(50% - 40px);
+            max-width: calc(50% - 40px);
+            transition: transform 0.2s;
+        }
+        .chart-box:hover {
+            transform: scale(1.05);
+        }
+        .chart-box h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .chart-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            .chart-box {
+                flex-basis: calc(100% - 40px);
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Phishing Tool Analytics Dashboard</h1>
+        <p class="description">Visualize your company's susceptibility to phishing attacks and track progress over time.</p>
+    </div>
+
+    <div class="container">
+        <!-- Pie Chart -->
+        <div class="chart-box">
+            <h2>Phishing Attempts: Success vs. Prevention</h2>
+            <div class="chart-placeholder">
+                Pie Chart Placeholder
+            </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-box">
+            <h2>Departmental Risk Level Ranking</h2>
+            <div class="chart-placeholder">
+                Bar Chart Placeholder
+            </div>
+        </div>
+
+        <!-- Line Chart -->
+        <div class="chart-box">
+            <h2>Employee Security Training Progress</h2>
+            <div class="chart-placeholder">
+                Line Chart Placeholder
+            </div>
+        </div>
+
+        <!-- Polar Area Chart -->
+        <div class="chart-box">
+            <h2>Common Phishing Bait Types</h2>
+            <div class="chart-placeholder">
+                Polar Area Chart Placeholder
+            </div>
+        </div>
+    </div>
+</body>
+</html>
