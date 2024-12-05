@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phishing Tool Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,19 +27,16 @@
             font-weight: 300;
         }
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            justify-content: center;
+            padding: 20px;
         }
         .chart-box {
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            flex-basis: calc(50% - 40px);
-            max-width: calc(50% - 40px);
             transition: transform 0.2s;
         }
         .chart-box:hover {
@@ -48,63 +46,119 @@
             margin-top: 0;
             text-align: center;
         }
-        .chart-placeholder {
+        .chart {
             width: 100%;
-            height: 300px;
-            background-color: #e0e0e0;
+            height: 200px;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            font-size: 18px;
+            position: relative;
         }
         @media (max-width: 768px) {
-            .chart-box {
-                flex-basis: calc(100% - 40px);
-                max-width: calc(100% - 40px);
+            .container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Phishing Tool Analytics Dashboard</h1>
-        <p class="description">Visualize your company's susceptibility to phishing attacks and track progress over time.</p>
-    </div>
-
-    <div class="container">
+     <div class="container">
         <!-- Pie Chart -->
         <div class="chart-box">
             <h2>Phishing Attempts: Success vs. Prevention</h2>
-            <div class="chart-placeholder">
-                Pie Chart Placeholder
-            </div>
+            <canvas id="pieChart"></canvas>
         </div>
 
         <!-- Bar Chart -->
         <div class="chart-box">
             <h2>Departmental Risk Level Ranking</h2>
-            <div class="chart-placeholder">
-                Bar Chart Placeholder
-            </div>
+            <canvas id="barChart"></canvas>
         </div>
 
         <!-- Line Chart -->
         <div class="chart-box">
             <h2>Employee Security Training Progress</h2>
-            <div class="chart-placeholder">
-                Line Chart Placeholder
-            </div>
+            <canvas id="lineChart"></canvas>
         </div>
 
         <!-- Polar Area Chart -->
         <div class="chart-box">
             <h2>Common Phishing Bait Types</h2>
-            <div class="chart-placeholder">
-                Polar Area Chart Placeholder
-            </div>
+            <canvas id="polarAreaChart"></canvas>
         </div>
     </div>
+
+    <script>
+        // Pie Chart
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Successful Attempts', 'Prevented Attempts'],
+                datasets: [{
+                    label: 'Phishing Attempts',
+                    data: [30, 70],
+                    backgroundColor: ['#ff6384', '#36a2eb'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['HR', 'Finance', 'IT', 'Sales', 'Marketing'],
+                datasets: [{
+                    label: 'Risk Level',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: '#4CAF50',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Training Progress',
+                    data: [65, 59, 80, 81, 56, 55],
+                    fill: false,
+                    borderColor: '#ff6384',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Polar Area Chart
+        const polarCtx = document.getElementById('polarAreaChart').getContext('2d');
+        new Chart(polarCtx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Fake Invoices', 'Free Gift Cards', 'Urgent Account Updates', 'Password Resets'],
+                datasets: [{
+                    label: 'Phishing Bait Types',
+                    data: [11, 16, 7, 14],
+                    backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+    </script>
 </body>
 </html>
