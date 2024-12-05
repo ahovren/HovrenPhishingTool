@@ -3,407 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Tool UI</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #000; /* Black text */
-            background-color: #fff; /* White background */
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header */
-        .header {
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .nav a {
-            color: #fff; /* White text */
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: #aaa; /* Gray hover effect */
-        }
-
-        /* Main Section */
-        .main {
-            padding: 2rem;
-            background-color: #ffffff; /* Light gray background */
-            min-height: calc(100vh - 140px); /* Full height minus header and footer */
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section {
-            margin-bottom: 2rem;
-            background: #fff; /* White background for sections */
-            padding: 2rem;
-            border: 1px solid #000; /* Black border */
-            border-radius: 5px;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-        }
-
-        .section h1, .section h2 {
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #000; /* Black text */
-        }
-
-        .phishing-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333; /* Dark gray for label text */
-        }
-
-        .phishing-form .form-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            width: 100%;
-        }
-
-        .phishing-form .form-group > div {
-            flex: 1;
-        }
-
-        .phishing-form input,
-        .phishing-form textarea,
-        .phishing-form select,
-        .phishing-form button {
-            padding: 0.75rem;
-            border: 1px solid #000; /* Black border */
-            border-radius: 5px;
-            background-color: #fff; /* White background */
-            color: #000; /* Black text */
-            font-size: 1rem;
-        }
-
-        .phishing-form input[type="text"],
-        .phishing-form input[type="email"],
-        .phishing-form select {
-            width: 100%;
-        }
-
-        .phishing-form button {
-            width: 100%;
-            background-color: #000; /* Black button */
-            color: #fff; /* White text */
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .phishing-form button:hover {
-            background-color: #333; /* Dark gray hover effect */
-        }
-
-        /* Results Section */
-        .results-display {
-            background-color: #fff; /* White background */
-            padding: 1.5rem;
-            border: 1px solid #000; /* Black border */
-            border-radius: 5px;
-            min-height: 150px;
-            font-size: 1rem;
-            color: #000; /* Black text */
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
-            padding: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-        /* General Styling */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-        /* General popup styling */
-        .popup {
-            position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            width: 90%;
-            max-width: 700px;
-            z-index: 1000;
-        }
-
-        .popup-content h2 {
-            margin: 0 0 10px;
-            font-size: 24px;
-        }
-
-        .popup-content {
-            border: 1px solid #000000;
-            border-radius: 5px;
-            padding: 10px;
-            overflow-y: auto; /* Enables vertical scrolling */
-            height: 200px; /* Fixed height */
-            max-width: 100%; /* Prevents expansion */
-            font-size: 14px; /* Adjust font size for readability */
-            line-height: 1.5; /* Improves text spacing */
-            word-wrap: break-word; /* Prevents long words from breaking layout */
-            background-color: #f9f9f9; /* Light background for contrast */
-        }
-
-        .popup-actions {
-            text-align: center;
-        }
-
-        .popup-actions button {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #agreeButton {
-            background-color: #00000;
-            color: #fff;
-            cursor: not-allowed;
-        }
-
-        #agreeButton:enabled {
-            cursor: pointer;
-            background-color: #28a745;
-        }
-
-        #disagreeButton {
-            background-color: #f44336;
-            color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>Phishing Tool - Hovren Security Solutions</title>
 </head>
 <body>
-    <!-- Terms and Conditions Popup -->
-    <div id="termsPopup" class="popup">
-        <div class="popup-content">
-            <h1>Terms and Conditions</h1>
-
-            <p><strong>Effective Date:</strong>12/2/2024</p>
-    
-            <h2>1. Purpose of the Tool</h2>
-            <p>This tool is designed for <strong>educational, research, and training purposes</strong> only. It aims to help users:</p>
-            <ul>
-                <li>Educate themselves on cybersecurity threats.</li>
-                <li>Conduct simulated phishing campaigns in controlled environments.</li>
-                <li>Raise awareness and train individuals or organizations about social engineering tactics.</li>
-            </ul>
-            <p>Unauthorized use of this tool for malicious purposes is strictly prohibited.</p>
-    
-            <h2>2. Authorized Use</h2>
-            <p>You are permitted to use this tool only if you agree to the following:</p>
-            <ul>
-                <li>You will use this tool exclusively for <strong>ethical, educational, or professional purposes</strong> in compliance with applicable laws and regulations.</li>
-                <li>You will not use this tool to engage in illegal activities, including but not limited to:
-                    <ul>
-                        <li>Hacking</li>
-                        <li>Fraudulent activities</li>
-                        <li>Harassment or stalking</li>
-                        <li>Theft of data or sensitive information</li>
-                    </ul>
-                </li>
-                <li>You have explicit permission to conduct phishing simulations on the intended recipients.</li>
-            </ul>
-    
-            <h2>3. Prohibited Activities</h2>
-            <p>The following actions are strictly prohibited:</p>
-            <ul>
-                <li>Using this tool to target individuals, companies, or institutions without their knowledge and consent.</li>
-                <li>Distributing phishing emails or malicious content that can harm users, steal data, or compromise systems.</li>
-                <li>Using this tool to bypass security measures of unauthorized systems.</li>
-                <li>Reselling, redistributing, or reproducing the tool for any purpose other than authorized use.</li>
-            </ul>
-    
-            <h2>4. User Responsibility</h2>
-            <p>You are solely responsible for:</p>
-            <ul>
-                <li>Ensuring compliance with all applicable laws and ethical standards.</li>
-                <li>Obtaining proper authorization from individuals or organizations before conducting phishing campaigns.</li>
-                <li>Using the tool in controlled, secure environments to prevent unintended harm or data breaches.</li>
-            </ul>
-            <p>We are not responsible for any damages, legal repercussions, or unauthorized activities resulting from improper use of this tool.</p>
-    
-            <h2>5. Data Privacy</h2>
-            <ul>
-                <li>This tool does not store, collect, or transmit any data unless explicitly specified.</li>
-                <li>Users are responsible for safeguarding all recipient information (e.g., emails, names) entered into the tool and ensuring it is used ethically.</li>
-            </ul>
-    
-            <h2>6. Limitation of Liability</h2>
-            <p><strong>Hovren Security Solutions</strong>, its creators, and affiliates:</p>
-            <ul>
-                <li>Are not liable for any misuse or unauthorized activities conducted with this tool.</li>
-                <li>Are not responsible for any direct, indirect, or consequential damages arising from the use or inability to use this tool.</li>
-            </ul>
-            <p>Use of this tool is at your own risk.</p>
-    
-            <h2>7. Disclaimer</h2>
-            <p>This tool is provided on an "as-is" basis. We make no guarantees regarding the accuracy, performance, or suitability of this tool for any purpose.</p>
-    
-            <h2>8. Termination</h2>
-            <p>We reserve the right to suspend or terminate access to this tool without notice for any user found violating these Terms and Conditions.</p>
-    
-            <h2>9. Governing Law</h2>
-            <p>These terms are governed by the laws of California, without regard to its conflict of laws principles.</p>
-    
-            <h2>10. Contact</h2>
-            <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at <strong>contact@hovrensecuritysolutions.com</strong>.</p>
-    
-            <p><strong>By accessing this tool, you acknowledge that you have read, understood, and agree to these Terms and Conditions.</strong></p>
-        </div>
-            <div class="popup-actions">
-                <button id="agreeButton">Agree</button>
-                <button id="disagreeButton">Disagree</button>
+    <header>
+        <nav>
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const termsPopup = document.getElementById("termsPopup");
-    const termsContainer = document.getElementById("termsContainer");
-    const agreeButton = document.getElementById("agreeButton");
-    const disagreeButton = document.getElementById("disagreeButton");
-
-    // "Agree" button action
-    agreeButton.addEventListener("click", () => {
-        termsPopup.style.display = "none"; // Hide popup
-        document.getElementById("mainContent").style.display = "block"; // Show main content
-    });
-
-    // "Disagree" button action
-    disagreeButton.addEventListener("click", () => {
-        alert("You have disagreed with the terms. The website will now close.");
-        window.close(); // Close the tab (may not work in some browsers)
-    });
-});
-    </script>
-    <main class="main">
-        <section id="create-email" class="section">
+    <main>
+        <div class="container">
             <h1>Create a Phishing Email</h1>
-            <form class="phishing-form">
-                <div class="form-group">
-                    <div>
-                        <label for="email-subject">Subject</label>
-                        <input type="text" id="email-subject" name="email-subject" placeholder="Enter email subject">
-                    </div>
-                    <div>
-                        <label for="recipient-email">Recipient's Email</label>
-                        <input type="email" id="recipient-email" name="recipient-email" placeholder="Enter recipient's email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label for="email-body">Body</label>
-                        <textarea id="email-body" name="email-body" placeholder="Write the email body here" style="width: 100%; height: 150px; resize: none;"></textarea>
-                    </div>
-                    <div>
-                        <label for="spoof-domain">Select Domain to Spoof</label>
-                        <select id="spoof-domain" name="spoof-domain">
-                            <option value="example.com">example.com</option>
-                            <option value="fakebank.com">fakebank.com</option>
-                            <option value="trustedsource.org">trustedsource.org</option>
-                            <option value="businessinc.net">businessinc.net</option>
-                        </select>
-                    </div>
-                </div>
+            <form>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter email subject">
+
+                <label for="recipient">Recipient's Email</label>
+                <input type="email" id="recipient" name="recipient" placeholder="Enter recipient's email">
+
+                <label for="body">Body</label>
+                <textarea id="body" name="body" placeholder="Write the email body here"></textarea>
+
+                <label for="domain">Select Domain to Spoof</label>
+                <select id="domain" name="domain">
+                    <option value="example.com">example.com</option>
+                    <option value="fake-domain.com">fake-domain.com</option>
+                    <option value="phishing.com">phishing.com</option>
+                </select>
+
                 <button type="submit">Generate Phishing Email</button>
             </form>
-        </section>
 
-        <section id="results" class="section">
-            <h2>Analytics</h2>
-            <div class="results-display">
+            <div class="analytics">
+                <h2>Analytics</h2>
                 <p>No results yet. Send a phishing email campaign to see analytics.</p>
             </div>
-        </section>
+        </div>
     </main>
 
-    <script>
-        document.getElementById('phishingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-    
-            const subject = document.getElementById('subject').value;
-            const body = document.getElementById('body').value;
-            const recipientEmail = document.getElementById('recipientEmail').value;
-            const spoofDomain = document.getElementById('spoof-domain').value;
-    
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.style.display = 'none'; // Hide results initially
-    
-            // Define your deployed URL here
-            const webAppUrl = 'https://script.google.com/a/macros/hovrensecuritysolutions.com/s/AKfycbyyXSQ2rCSXhlLyjkeV9_MGi3TnN_HteTN2ZdLLJgsPa8N_bohsNOTmo2dFoInAegQw/exec'; // Replace with your actual URL
-    
-            try {
-                const response = await fetch(webAppUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ subject, body, recipientEmail, spoofDomain }),
-                });
-    
-                const data = await response.json();
-    
-                if (response.ok) {
-                    resultsDiv.textContent = data.emailContent;
-                    resultsDiv.style.display = 'block'; // Show results
-                } else {
-                    alert(data.error || 'Something went wrong.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to generate email.');
-            }
-        });
-    </script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hovren Security Solutions. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
