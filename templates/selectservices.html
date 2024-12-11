@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>My Employees</title>
+    <title>Manage My Services</title>
     <style>
         /* 
             Basic reset to ensure consistent styling 
@@ -116,60 +116,71 @@
             font-size: 1.2rem;
         }
 
-        /* Employee table styles */
-        .employees-section table {
-            width: 100%;
-            border-collapse: collapse;
+        /* 
+            Tiers section styling 
+        */
+        .tiers-section {
             margin-bottom: 2rem;
         }
 
-        .employees-section th, .employees-section td {
-            text-align: left;
-            padding: 0.75rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .employees-section th {
-            background: #f0f0f0;
-        }
-
-        .employee-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #bbb;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 0.75rem;
-        }
-
-        .employee-name {
-            vertical-align: middle;
-        }
-
-        /* Add New Employee Form */
-        .add-employee-form {
-            max-width: 400px;
+        .tier-plans {
             display: flex;
-            flex-direction: column;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .add-employee-form label {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .add-employee-form input[type="text"],
-        .add-employee-form input[type="email"],
-        .add-employee-form select {
-            padding: 0.5rem;
-            margin-bottom: 1rem;
+        .tier {
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 0.9rem;
+            padding: 1rem;
+            background: #fafafa;
+            text-align: center;
+            position: relative;
         }
 
-        .add-employee-form button {
+        .tier h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .tier ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .tier ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tier input[type="radio"] {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            transform: scale(1.25);
+            cursor: pointer;
+        }
+
+        .tier-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Action buttons */
+        .actions {
+            margin-top: 2rem;
+        }
+
+        .actions button {
             padding: 0.75rem 1rem;
             background: #333;
             color: #fff;
@@ -179,7 +190,7 @@
             font-size: 0.9rem;
         }
 
-        .add-employee-form button:hover {
+        .actions button:hover {
             background: #555;
         }
 
@@ -226,7 +237,11 @@
                 margin-bottom: 1rem;
             }
 
-            .add-employee-form {
+            .tier-plans {
+                flex-direction: column;
+            }
+
+            .tier {
                 max-width: 100%;
             }
         }
@@ -241,17 +256,18 @@
         <h2>My Account</h2>
         <ul class="nav-links">
             <li><a href="profile.html">Profile Overview</a></li>
-            <li><a href="my-services.html">Manage My Services</a></li>
+            <li><a href="myservices.html" class="active">Manage My Services</a></li>
             <li><a href="billing.html">Billing</a></li>
-            <li><a href="my-employees.html" class="active">My Employees</a></li>
+            <li><a href="myemployees.html">My Employees</a></li>
             <li><a href="settings.html">Settings</a></li>
             <button type="button" onclick="history.back()">Back</button>
+
         </ul>
     </aside>
 
     <!-- 
         Right column main content 
-        Displays user profile info and employees list
+        Displays user profile info and services tiers
     -->
     <main class="main-content">
         <!-- 
@@ -268,73 +284,56 @@
             </div>
         </div>
 
-        <section class="employees-section">
-            <h2>Your Employees</h2>
-            <!-- 
-                Table to display list of employees 
-                Includes name, position, email 
-            -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Employee</th>
-                        <th>Department</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span class="employee-avatar"></span>
-                            <span class="employee-name">Jane Smith</span>
-                        </td>
-                        <td>IT</td>
-                        <td>jane.doe@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="employee-avatar"></span>
-                            <span class="employee-name">Mike Johnson</span>
-                        </td>
-                        <td>Management</td>
-                        <td>john.doe@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="employee-avatar"></span>
-                            <span class="employee-name">Emily Davis</span>
-                        </td>
-                        <td>HR</td>
-                        <td>jane.doe@example.com</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <section class="tiers-section">
+            <h2>Select Your Service Tier</h2>
+            <p>Choose one of the following service plans that best fits your needs.</p>
+            <form action="#" method="post">
+                <div class="tier-plans">
+                    <!-- Basic Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="basic" checked>
+                        <h3>Basic</h3>
+                        <p>Get started with essential features.</p>
+                        <ul>
+                            <li>Access to core services</li>
+                            <li>Standard support</li>
+                            <li>Up to 3 employees</li>
+                        </ul>
+                        <p class="tier-price">Free</p>
+                    </label>
 
-        <section class="add-employee-section">
-            <h2>Add a New Employee</h2>
-            <form class="add-employee-form" action="#" method="post">
-                <label for="employeeName">Name</label>
-                <input type="text" id="employeeName" name="employeeName" placeholder="Enter full name" required />
+                    <!-- Pro Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="pro">
+                        <h3>Pro</h3>
+                        <p>Scale your operations with additional features.</p>
+                        <ul>
+                            <li>All Basic features</li>
+                            <li>Priority support</li>
+                            <li>Up to 25 users</li>
+                            <li>Advanced reporting tools</li>
+                        </ul>
+                        <p class="tier-price">$10/month</p>
+                    </label>
 
-                <label for="employeePosition">Department</label>
-                <select id="employeePosition" name="employeePosition" required>
-                    <option value="" disabled selected>Select a department</option>
-                    <option value="IT">IT</option>
-                    <option value="Management">Management</option>
-                    <option value="HR">HR</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Sales">Sales</option>
-                    <option value="Operations">Operations</option>
-                    <option value="Other">Other</option>
-                </select>
+                    <!-- Enterprise Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="enterprise">
+                        <h3>Enterprise</h3>
+                        <p>Unlock our full suite of offerings.</p>
+                        <ul>
+                            <li>All Pro features</li>
+                            <li>Dedicated account manager</li>
+                            <li>Unlimited users</li>
+                            <li>Custom solutions & integrations</li>
+                        </ul>
+                        <p class="tier-price">Contact Us</p>
+                    </label>
+                </div>
 
-
-                <label for="employeeEmail">Email</label>
-                <input type="email" id="employeeEmail" name="employeeEmail" placeholder="Enter email address" required />
-
-                <button type="submit">Add Employee</button>
+                <div class="actions">
+                    <button type="submit">Save Selection</button>
+                </div>
             </form>
         </section>
     </main>

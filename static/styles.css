@@ -1,63 +1,141 @@
-/* General styles for body and header */
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #ffffff;
-    color: #333333;
+    color: #000; /* Black text */
+    background-color: #ffffff; /* White background */
     margin: 0;
     padding: 0;
 }
 
+/* Header and Navigation */
+header {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 1rem 2rem;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #fff; /* White text */
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #aaa; /* Gray hover effect */
+}
+
+/* Container */
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-header {
-    background: #000;
-    padding: 20px;
-    color: #ffffff;
-    text-align: center;
+/* Headings and Paragraphs */
+h1 {
+    color: #000;
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
-header nav .nav-list {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+h2 {
+    color: #000;
+    font-size: 1.8em;
+    margin-top: 30px;
 }
 
-header nav .nav-list li {
-    margin: 0 15px;
+p {
+    color: #000;
+    line-height: 1.6;
 }
 
-header nav .nav-list a {
-    color: #ffffff;
+.nav-list li {
+    position: relative; /* Important for dropdown positioning */
+    margin: 0 20px; /* Example spacing */
+}
+
+.nav-list a {
+    color: #fff;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    padding: 10px;
+    display: block;
 }
 
-header nav .nav-list a:hover {
-    color: #999;
+/* Dropdown styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* positions the menu right below the parent link */
+    left: 0;
+    background-color: #000;
+    min-width: 150px; /* gives a width to your dropdown */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Form styles */
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    white-space: nowrap; /* prevents text from wrapping */
+}
+
+.dropdown-menu a:hover {
+    background-color: #333;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Form Styles */
 form {
-    background: #f9f9f9;
-    padding: 30px;
-    border: 1px solid #e0e0e0;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 form label {
     display: block;
     font-weight: bold;
-    margin-top: 20px;
-    color: #333;
+    margin-top: 10px;
+    color: #000; /* ensure text is black */
 }
 
 form input[type="text"],
@@ -65,94 +143,24 @@ form input[type="email"],
 form input[type="password"],
 form textarea {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #333;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.3s ease;
-}
-
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="password"]:focus,
-form textarea:focus {
-    border-color: #000;
-    outline: none;
 }
 
 form button {
-    background: #000;
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    font-weight: 600;
-}
-
-form button:hover {
-    background: #333;
-}
-
-/* Footer styles */
-footer {
-    background: #000;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    font-size: 0.9em;
-}
-
-/* Analytics and tool-like panels */
-.analytics, .form-section {
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    margin-top: 30px;
-}
-
-/* Styles for headings and paragraph texts */
-h1 {
-    color: #000;
-    font-size: 2.2em;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-}
-
-h2 {
-    color: #000;
-    font-size: 1.8em;
-    margin-top: 30px;
-    font-weight: 600;
-}
-
-p {
-    color: #444;
-    line-height: 1.8;
-}
-
-/* Button styles */
-button[type="submit"] {
-    background-color: #000;
+    background: #000; /* Black button background */
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
 }
 
-button[type="submit"]:hover {
-    background-color: #333;
+form button:hover {
+    background: #444; /* Darker gray hover */
 }
 
 /* Input and textarea hover & focus states */
@@ -160,7 +168,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
@@ -172,21 +180,215 @@ textarea:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Media query for mobile responsiveness */
-@media (max-width: 768px) {
-    header nav .nav-list {
-        flex-direction: column;
-    }
+/* Analytics and tool-like panels */
+.analytics, .form-section {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
 
-    header nav .nav-list li {
-        margin: 10px 0;
-    }
+/* Footer styles */
+footer {
+    background: #000000; /* Keep the footer black to match header */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
 
-    .container {
-        padding: 15px;
-    }
+/* Register Here*/
+.register-here {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
 
-    form {
-        padding: 20px;
-    }
-} 
+.container-register {
+    max-width: 450px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.register {
+    background: #000; /* Black button background */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Phishing Tool */
+main {
+    padding: 2rem;
+    background-color: #ffffff;
+    min-height: calc(100vh - 140px);
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 2rem;
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #000; /* Black border */
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.section h1, .section h2 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000; /* Black text */
+}
+
+.phishing-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333; /* Dark gray for label text */
+}
+
+.phishing-form .form-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.phishing-form .form-group > div {
+    flex: 1;
+}
+
+.phishing-form input,
+.phishing-form textarea,
+.phishing-form select,
+.phishing-form button {
+    padding: 0.75rem;
+    border: 1px solid #000; /* Black border */
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    font-size: 1rem;
+}
+
+.phishing-form input[type="text"],
+.phishing-form input[type="email"],
+.phishing-form select {
+    width: 100%;
+}
+
+.phishing-form textarea {
+    resize: none;
+}
+
+.phishing-form button {
+    width: 100%;
+    background-color: #000; /* Black button */
+    color: #fff; /* White text */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.phishing-form button:hover {
+    background-color: #333; /* Dark gray hover effect */
+}
+
+/* Results Section */
+.results-display {
+    background-color: #fff; /* White background */
+    padding: 1.5rem;
+    border: 1px solid #000; /* Black border */
+    border-radius: 5px;
+    min-height: 150px;
+    font-size: 1rem;
+    color: #000; /* Black text */
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* positions the menu right below the parent link */
+    left: 0;
+    background-color: #000;
+    min-width: 150px; /* gives a width to your dropdown */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    white-space: nowrap; /* prevents text from wrapping */
+}
+
+.dropdown-menu a:hover {
+    background-color: #333;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Ensure the parent container is not clipping overflow */
+header, .parent-container {
+    position: relative;  /* Ensure tooltip can escape */
+    z-index: 1;  /* Base layer for header */
+    overflow: visible;  /* Allow elements to overlap */
+}
+/* Tooltip Styling */
+.info-tooltip {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: var(--cta-color);
+    cursor: help;
+    margin-left: 10px;
+}
+
+.info-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: white;
+    white-space: pre-wrap;
+    width: 300px; /* Adjust as needed */
+    font-size: 0.9rem;
+    z-index: 10;
+    text-align: center;
+}
+
+.info-tooltip:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--card-background) transparent transparent transparent;
+    z-index: 10;
+}
