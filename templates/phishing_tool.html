@@ -7,54 +7,226 @@
     <title>Phishing Tool - Hovren Security Solutions</title>
 </head>
 <body>
+
     <header>
+        <div class="header-logo">Hovren Security Solutions</div>
         <nav>
             <div class="container">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
+                                        <!-- Dropdown structure starts here -->
+                                        <li class="dropdown">
+                                            <a href="services.html">Services</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="phishing_tool.html">Phishing Tool</a></li>
+                                                <li><a href="pentesting.html">Penetration Testing Tool</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Dropdown structure ends here -->
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <!-- Dropdown structure starts here -->
+                    <li class="dropdown">
+                        <a href="login.html">Login</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="logout.html">Logout</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown structure ends here -->
                 </ul>
             </div>
         </nav>
     </header>
 
-    <main>
-        <div class="container">
+    <main class="main">
+
+        <section id="create-email" class="section">
             <h1>Create a Phishing Email</h1>
-            <form>
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="Enter email subject">
-
-                <label for="recipient">Recipient's Email</label>
-                <input type="email" id="recipient" name="recipient" placeholder="Enter recipient's email">
-
-                <label for="body">Body</label>
-                <textarea id="body" name="body" placeholder="Write the email body here"></textarea>
-
-                <label for="domain">Select Domain to Spoof</label>
-                <select id="domain" name="domain">
-                    <option value="example.com">example.com</option>
-                    <option value="fake-domain.com">fake-domain.com</option>
-                    <option value="phishing.com">phishing.com</option>
-                </select>
-
+            <form class="phishing-form" id="phishingForm">
+                <div class="form-group">
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Enter email subject">
+                    </div>
+<!-- Replaced Recipient Email with Template Selection -->
+<div>
+    <label for="template-select">Choose a Template</label>
+    <select id="template-select" name="template-select">
+        <option value="" disabled selected>Select a template</option>
+        <option value="password-reset">Password Reset</option>
+        <option value="account-alert">Account Alert</option>
+        <option value="special-offer">Special Offer</option>
+        <option value="security-update">Security Update</option>
+    </select>
+</div>
+                </div>
+    
+                <!-- Replace Body with Employee Selection -->
+                <div class="form-group">
+                    <div>
+                        <label for="employee-select">Select Employee</label>
+                        <select id="employee-select" name="employee-select">
+                            <option value="" disabled selected>Select an employee</option>
+                            <option value="john.doe@example.com">John Doe</option>
+                            <option value="jane.smith@example.com">Jane Smith</option>
+                            <option value="emma.watson@company.com">Emma Watson</option>
+                            <option value="mark.jones@corporate.com">Mark Jones</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="spoof-domain">Select Domain to Spoof</label>
+                        <select id="spoof-domain" name="spoof-domain">
+                            <option value="example.com">example.com</option>
+                            <option value="fakebank.com">fakebank.com</option>
+                            <option value="trustedsource.org">trustedsource.org</option>
+                            <option value="businessinc.net">businessinc.net</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="form-group" style="align-items: center;">
+                    <input type="checkbox" id="terms-checkbox" name="terms-checkbox" style="margin-right:10px;">
+                    <label for="terms-checkbox" style="flex: none;">I agree to the <a href="#ToC.html" target="_blank">Terms and Conditions</a></label>
+                </div>
+    
                 <button type="submit">Generate Phishing Email</button>
             </form>
-
-            <div class="analytics">
-                <h2>Analytics</h2>
-                <p>No results yet. Send a phishing email campaign to see analytics.</p>
+        </section>
+    
+        <section id="results" class="section" style="display:block;">
+            <h2>Generated Email</h2>
+            <div class="results-display" id="resultsDisplay">
+                <p>No results yet. Select a template.</p>\
             </div>
-        </div>
+        </section>
+    
     </main>
-
+    
     <footer>
-        <div class="container">
+        <div class="footer">
             <p>&copy; 2024 Hovren Security Solutions. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('phishingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            if (!termsCheckbox.checked) {
+                alert('You must agree to the Terms and Conditions before proceeding.');
+                return;
+            }
+
+            const subject = document.getElementById('subject').value;
+            const body = document.getElementById('body').value;
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            const spoofDomain = document.getElementById('spoof-domain').value;
+
+            const resultsDiv = document.getElementById('resultsDisplay');
+            resultsDiv.style.display = 'none'; // Hide results initially
+
+            // Define your deployed URL here (adjust if necessary)
+            const webAppUrl = 'https://script.google.com/a/macros/hovrensecuritysolutions.com/s/AKfycbyyXSQ2rCSXhlLyjkeV9_MGi3TnN_HteTN2ZdLLJgsPa8N_bohsNOTmo2dFoInAegQw/exec';
+
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ subject, body, recipientEmail, spoofDomain }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Display the generated email content in results
+                    resultsDiv.textContent = data.emailContent;
+                    resultsDiv.style.display = 'block'; // Show results
+                } else {
+                    alert(data.error || 'Something went wrong.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to generate email.');
+            }
+        });
+    </script>
+    <script>
+    // Email template data
+    const templateContent = {
+        "password-reset": `
+            <h3>Password Reset Request</h3>
+            <p>We received a request to reset your password. Click the link below to proceed:</p>
+            <a href="https://fake-reset-link.com">Reset Password</a>
+            <p>If you did not request this change, please ignore this message.</p>
+        `,
+        "account-alert": `
+            <h3>Important Account Alert</h3>
+            <p>We noticed suspicious activity on your account. Please verify your recent transactions.</p>
+            <a href="https://fake-alert-link.com">Review Account</a>
+        `,
+        "special-offer": `
+            <h3>Exclusive Special Offer!</h3>
+            <p>Congratulations! You have been selected for an exclusive offer. Click below to claim:</p>
+            <a href="https://fake-offer-link.com">Claim Offer</a>
+        `,
+        "security-update": `
+            <h3>Security Update Notice</h3>
+            <p>Your account requires a security update to stay protected. Click below to update:</p>
+            <a href="https://fake-security-update.com">Update Now</a>
+        `
+    };
+
+    // Update email display on template selection
+    document.getElementById('template-select').addEventListener('change', (e) => {
+        const selectedTemplate = e.target.value;
+        const resultsDiv = document.getElementById('resultsDisplay');
+
+        if (templateContent[selectedTemplate]) {
+            resultsDiv.innerHTML = templateContent[selectedTemplate];
+        } else {
+            resultsDiv.innerHTML = "<p>No results yet. Select a template.</p>";
+        }
+    });
+
+    // Handle form submission
+    document.getElementById('phishingForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const termsCheckbox = document.getElementById('terms-checkbox');
+        if (!termsCheckbox.checked) {
+            alert('You must agree to the Terms and Conditions before proceeding.');
+            return;
+        }
+
+        const subject = document.getElementById('subject').value;
+        const spoofDomain = document.getElementById('spoof-domain').value;
+        const employeeEmails = Array.from(document.getElementById('employee-select').selectedOptions).map(option => option.value);
+
+        // Define your deployed URL here
+        const webAppUrl = 'https://script.google.com/a/macros/hovrensecuritysolutions.com/s/AKfycbyyXSQ2rCSXhlLyjkeV9_MGi3TnN_HteTN2ZdLLJgsPa8N_bohsNOTmo2dFoInAegQw/exec';
+
+        try {
+            const response = await fetch(webAppUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ subject, spoofDomain, employeeEmails }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Email campaign successfully generated!');
+            } else {
+                alert(data.error || 'Something went wrong.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to generate email.');
+        }
+    });
+</script>
 </body>
 </html>

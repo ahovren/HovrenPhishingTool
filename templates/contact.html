@@ -8,16 +8,34 @@
 </head>
 <body>
     <header>
+        <div class="header-logo">Hovren Security Solutions</div>
         <nav>
-            <div class="container">
-                <ul class="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </div>
+                <div class="container">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                                            <!-- Dropdown structure starts here -->
+                                            <li class="dropdown">
+                                                <a href="services.html">Services</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="phishing_tool.html">Phishing Tool</a></li>
+                                                    <li><a href="pentesting.html">Penetration Testing Tool</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- Dropdown structure ends here -->
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <!-- Dropdown structure starts here -->
+                        <li class="dropdown">
+                            <a href="login.html">Login</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="dashboard.html">Dashboard</a></li>
+                                <li><a href="logout.html">Logout</a></li>
+                            </ul>
+                        </li>
+                        <!-- Dropdown structure ends here -->
+                    </ul>
+                </div>
         </nav>
     </header>
     

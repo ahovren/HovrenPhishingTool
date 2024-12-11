@@ -1,0 +1,56 @@
+<main class="main">
+
+    <section id="create-email" class="section">
+        <h1>Create a Phishing Email</h1>
+        <form class="phishing-form" id="phishingForm">
+            <div class="form-group">
+                <div>
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter email subject">
+                </div>
+                <div>
+                    <label for="recipientEmail">Recipient's Email</label>
+                    <input type="email" id="recipientEmail" name="recipientEmail" placeholder="Enter recipient's email">
+                </div>
+            </div>
+
+            <!-- Replace Body with Employee Selection -->
+            <div class="form-group">
+                <div>
+                    <label for="employee-select">Select Employee</label>
+                    <select id="employee-select" name="employee-select">
+                        <option value="" disabled selected>Select an employee</option>
+                        <option value="john.doe@example.com">John Doe</option>
+                        <option value="jane.smith@example.com">Jane Smith</option>
+                        <option value="emma.watson@company.com">Emma Watson</option>
+                        <option value="mark.jones@corporate.com">Mark Jones</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="spoof-domain">Select Domain to Spoof</label>
+                    <select id="spoof-domain" name="spoof-domain">
+                        <option value="example.com">example.com</option>
+                        <option value="fakebank.com">fakebank.com</option>
+                        <option value="trustedsource.org">trustedsource.org</option>
+                        <option value="businessinc.net">businessinc.net</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="align-items: center;">
+                <input type="checkbox" id="terms-checkbox" name="terms-checkbox" style="margin-right:10px;">
+                <label for="terms-checkbox" style="flex: none;">I agree to the <a href="#ToC.html" target="_blank">Terms and Conditions</a></label>
+            </div>
+
+            <button type="submit">Generate Phishing Email</button>
+        </form>
+    </section>
+
+    <section id="results" class="section" style="display:block;">
+        <h2>Analytics</h2>
+        <div class="results-display" id="resultsDisplay">
+            <p>No results yet. Send a phishing email campaign to see analytics.</p>
+        </div>
+    </section>
+
+</main>

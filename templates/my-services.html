@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Manage My Services</title>
+    <style>
+        /* 
+            Basic reset to ensure consistent styling 
+            across browsers 
+        */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            color: #333;
+            line-height: 1.5;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 
+            Sidebar styles 
+            - Fixed width
+            - Distinct background
+            - Vertical nav links with hover states
+        */
+        .sidebar {
+            width: 250px;
+            background: #f5f5f5;
+            border-right: 1px solid #ddd;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #444;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 0;
+            display: inline-block;
+            width: 100%;
+            transition: background 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: #eaeaea;
+            border-radius: 4px;
+        }
+
+        /* 
+            Just to visually indicate the current page 
+        */
+        .nav-links a.active {
+            font-weight: bold;
+            background: #ddd;
+            border-radius: 4px;
+        }
+
+        /* 
+            Main content area 
+            - Will take up remaining space
+        */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Placeholder avatar */
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ccc;
+            margin-right: 1.5rem;
+        }
+
+        .profile-details h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            margin: 2rem 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* 
+            Tiers section styling 
+        */
+        .tiers-section {
+            margin-bottom: 2rem;
+        }
+
+        .tier-plans {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tier {
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            background: #fafafa;
+            text-align: center;
+            position: relative;
+        }
+
+        .tier h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .tier ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .tier ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tier input[type="radio"] {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            transform: scale(1.25);
+            cursor: pointer;
+        }
+
+        .tier-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Action buttons */
+        .actions {
+            margin-top: 2rem;
+        }
+
+        .actions button {
+            padding: 0.75rem 1rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .actions button:hover {
+            background: #555;
+        }
+
+        /* 
+            Responsive adjustments 
+        */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sidebar h2 {
+                margin-bottom: 0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-avatar {
+                margin-bottom: 1rem;
+            }
+
+            .tier-plans {
+                flex-direction: column;
+            }
+
+            .tier {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Left column navigation sidebar 
+        Provides access to different profile sections
+    -->
+    <aside class="sidebar">
+        <h2>My Account</h2>
+        <ul class="nav-links">
+            <li><a href="profile.html">Profile Overview</a></li>
+            <li><a href="my-services.html" class="active">Manage My Services</a></li>
+            <li><a href="billing.html">Billing</a></li>
+            <li><a href="my-employees.html">My Employees</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <button type="button" onclick="history.back()">Back</button>
+
+        </ul>
+    </aside>
+
+    <!-- 
+        Right column main content 
+        Displays user profile info and services tiers
+    -->
+    <main class="main-content">
+        <!-- 
+            Profile Header:
+            - Avatar placeholder
+            - User Name
+            - Basic details 
+        -->
+        <div class="profile-header">
+            <div class="profile-avatar"></div>
+            <div class="profile-details">
+                <h1>John Doe</h1>
+                <p>Account Holder | john.doe@example.com</p>
+            </div>
+        </div>
+
+        <section class="tiers-section">
+            <h2>Select Your Service Tier</h2>
+            <p>Choose one of the following service plans that best fits your needs.</p>
+            <form action="#" method="post">
+                <div class="tier-plans">
+                    <!-- Basic Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="basic" checked>
+                        <h3>Basic</h3>
+                        <p>Get started with essential features.</p>
+                        <ul>
+                            <li>Access to core services</li>
+                            <li>Standard support</li>
+                            <li>Up to 3 employees</li>
+                        </ul>
+                        <p class="tier-price">Free</p>
+                    </label>
+
+                    <!-- Pro Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="pro">
+                        <h3>Pro</h3>
+                        <p>Scale your operations with additional features.</p>
+                        <ul>
+                            <li>All Basic features</li>
+                            <li>Priority support</li>
+                            <li>Up to 25 users</li>
+                            <li>Advanced reporting tools</li>
+                        </ul>
+                        <p class="tier-price">$10/month</p>
+                    </label>
+
+                    <!-- Enterprise Tier -->
+                    <label class="tier">
+                        <input type="radio" name="serviceTier" value="enterprise">
+                        <h3>Enterprise</h3>
+                        <p>Unlock our full suite of offerings.</p>
+                        <ul>
+                            <li>All Pro features</li>
+                            <li>Dedicated account manager</li>
+                            <li>Unlimited users</li>
+                            <li>Custom solutions & integrations</li>
+                        </ul>
+                        <p class="tier-price">Contact Us</p>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">Save Selection</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

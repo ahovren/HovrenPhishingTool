@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Phishing Tool Analytics Dashboard</title>
+    <header>
+        <div class="header-logo">Hovren Security Solutions</div>
+        <nav>
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                                        <!-- Dropdown structure starts here -->
+                                        <li class="dropdown">
+                                            <a href="services.html">Services</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="phishing_tool.html">Phishing Tool</a></li>
+                                                <li><a href="pentesting.html">Penetration Testing Tool</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Dropdown structure ends here -->
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <!-- Dropdown structure starts here -->
+                    <li class="dropdown">
+                        <a href="login.html">Login</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="logout.html">Logout</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown structure ends here -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .description {
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        .container-chart {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .chart-box {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .chart-box:hover {
+            transform: scale(1.05);
+        }
+        .chart-box h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .chart {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+     <div class="container-chart">
+        <!-- Pie Chart -->
+        <div class="chart-box">
+            <h2>Phishing Attempts: Success vs. Prevention</h2>
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-box">
+            <h2>Departmental Risk Level Ranking</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <!-- Line Chart -->
+        <div class="chart-box">
+            <h2>Employee Security Training Progress</h2>
+            <canvas id="lineChart"></canvas>
+        </div>
+
+        <!-- Polar Area Chart -->
+        <div class="chart-box">
+            <h2>Common Phishing Bait Types</h2>
+            <canvas id="polarAreaChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Pie Chart
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Successful Attempts', 'Prevented Attempts'],
+                datasets: [{
+                    label: 'Phishing Attempts',
+                    data: [30, 70],
+                    backgroundColor: ['#ff6384', '#36a2eb'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['HR', 'Finance', 'IT', 'Sales', 'Marketing'],
+                datasets: [{
+                    label: 'Risk Level',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: '#4CAF50',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Training Progress',
+                    data: [65, 59, 80, 81, 56, 55],
+                    fill: false,
+                    borderColor: '#ff6384',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // Polar Area Chart
+        const polarCtx = document.getElementById('polarAreaChart').getContext('2d');
+        new Chart(polarCtx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Fake Invoices', 'Free Gift Cards', 'Urgent Account Updates', 'Password Resets'],
+                datasets: [{
+                    label: 'Phishing Bait Types',
+                    data: [11, 16, 7, 14],
+                    backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+    </script>
+</body>
+</html>

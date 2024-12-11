@@ -1,10 +1,10 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>About Us - Hovren Security Solutions</title>
+    <title>Services - Hovren Security Solutions</title>
 </head>
 <body>
     <header>
@@ -40,24 +40,41 @@
     </header>
     
     <main>
-        <div class="container">
-            <h1>About Us</h1>
-            <p>Founded in 2024, Hovren Security Solutions is dedicated to providing top-tier cybersecurity services to help protect businesses from evolving threats. Our mission is to empower organizations to stay ahead of cybercriminals by delivering robust and effective security solutions.</p>
+        <section id="network-scan">
+            <h2>
+                Network Vulnerability Scan
+                <span class="info-tooltip" data-tooltip="The Network Vulnerability Scan uses NMAP to identify potential weaknesses in the specified network. This information is used solely for providing actionable insights to secure your network.">ℹ</span>
+            </h2>
+            <form id="nmap-form">
+                <label for="target-ip">Target IP Address/Range:</label>
+                <input type="text" id="target-ip" name="target-ip" placeholder="Enter IP or range" required>
+                <button type="submit">Scan Network</button>
+            </form>
+        </section>
 
-            <h2>Our Vision</h2>
-            <p>Our vision is to create a safer digital environment for everyone. We believe that by equipping businesses with the right tools and knowledge, we can mitigate cybersecurity risks and foster a secure online community.</p>
+        <section id="cve-check">
+            <h2>
+                CVE Database Check
+                <span class="info-tooltip" data-tooltip="The CVE Database Check compares your scan results against the Common Vulnerabilities and Exposures database to identify known issues.">ℹ</span>
+            </h2>
+            <form id="cve-form">
+                <label for="vuln-id">Enter Vulnerability ID (Optional):</label>
+                <input type="text" id="vuln-id" name="vuln-id" placeholder="e.g., CVE-2024-12345">
+                <button type="submit">Check Vulnerabilities</button>
+            </form>
+        </section>
 
-            <h2>Our Team</h2>
-            <p>We are a team of highly skilled cybersecurity professionals with years of experience in the industry. Our experts come from diverse backgrounds, including ethical hacking, penetration testing, risk management, and social engineering. We are passionate about staying ahead of cyber threats and are continuously improving our knowledge and skills to deliver the best results to our clients.</p>
-
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li><strong>Expertise:</strong> Our team is composed of industry-certified experts who understand the complexities of modern cybersecurity challenges.</li>
-                <li><strong>Tailored Solutions:</strong> We provide customized solutions to meet the specific needs of each client, ensuring that your unique vulnerabilities are addressed.</li>
-                <li><strong>Proactive Approach:</strong> We don't just react to threats, we proactively seek out vulnerabilities and provide preventive measures to keep your organization safe.</li>
-                <li><strong>Commitment to Excellence:</strong> We are dedicated to delivering high-quality services that exceed client expectations and establish lasting relationships.</li>
-            </ul>
-        </div>
+        <section id="password-check">
+            <h2>
+                Password Vulnerability Test
+                <span class="info-tooltip" data-tooltip="The Password Vulnerability Test checks your password against brute-forcing databases and data breach records to ensure it is secure.">ℹ</span>
+            </h2>
+            <form id="password-form">
+                <label for="password-input">Enter Password:</label>
+                <input type="password" id="password-input" name="password-input" placeholder="Enter password" required>
+                <button type="submit">Check Password</button>
+            </form>
+        </section>
     </main>
 
     <footer>

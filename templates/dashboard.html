@@ -1,165 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
     <link rel="stylesheet" href="styles.css">
-    <title>Phishing Tool Analytics Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>User Dashboard</title>
     <style>
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
+            background: #f7f7f7;
         }
-        .header {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .description {
-            margin-top: 10px;
-            font-weight: 300;
-        }
+
+        /* Main Content Area */
         .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Dashboard grid */
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
+        }
+
+        .dash-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             padding: 20px;
-        }
-        .chart-box {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-        .chart-box:hover {
-            transform: scale(1.05);
-        }
-        .chart-box h2 {
-            margin-top: 0;
             text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.05);
         }
-        .chart {
-            width: 100%;
-            height: 200px;
-            border-radius: 10px;
-            position: relative;
+
+        .dash-item h3 {
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 15px;
         }
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
+
+        .dash-item p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .dash-item a {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .dash-item a:hover {
+            background: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .dash-item {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-     <div class="container">
-        <!-- Pie Chart -->
-        <div class="chart-box">
-            <h2>Phishing Attempts: Success vs. Prevention</h2>
-            <canvas id="pieChart"></canvas>
-        </div>
+    <header>
+        <div class="header-logo">Hovren Security Solutions</div>
+        <nav>
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                                        <!-- Dropdown structure starts here -->
+                                        <li class="dropdown">
+                                            <a href="services.html">Services</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="phishing_tool.html">Phishing Tool</a></li>
+                                                <li><a href="pentesting.html">Penetration Testing Tool</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Dropdown structure ends here -->
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <!-- Dropdown structure starts here -->
+                    <li class="dropdown">
+                        <a href="login.html">Login</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="logout.html">Logout</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown structure ends here -->
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        <!-- Bar Chart -->
-        <div class="chart-box">
-            <h2>Departmental Risk Level Ranking</h2>
-            <canvas id="barChart"></canvas>
-        </div>
+    <!-- Dashboard Content -->
+    <div class="container">
+        <h2>Welcome to Your Dashboard</h2>
 
-        <!-- Line Chart -->
-        <div class="chart-box">
-            <h2>Employee Security Training Progress</h2>
-            <canvas id="lineChart"></canvas>
-        </div>
+        <div class="dashboard-grid">
+            <!-- Profile -->
+            <div class="dash-item">
+                <h3>Profile</h3>
+                <p>View and update your personal details, billing info, and security settings.</p>
+                <a href="profile.html">Go to Profile</a>
+            </div>
 
-        <!-- Polar Area Chart -->
-        <div class="chart-box">
-            <h2>Common Phishing Bait Types</h2>
-            <canvas id="polarAreaChart"></canvas>
+            <!-- Services -->
+            <div class="dash-item">
+                <h3>Your Services</h3>
+                <p>Manage your active subscriptions, upgrades, and renewals.</p>
+                <a href="my-services.html">Manage Services</a>
+            </div>
+
+            <!-- Billing -->
+            <div class="dash-item">
+                <h3>Billing</h3>
+                <p>Update payment methods, view invoices, and manage billing history.</p>
+                <a href="billing.html">View Billing</a>
+            </div>
+
+            <!-- Support -->
+            <div class="dash-item">
+                <h3>Support</h3>
+                <p>Need help? Access our support center, FAQs, or submit a ticket.</p>
+                <a href="support.html">Get Support</a>
+            </div>
+
+            <!-- Terms & Conditions -->
+            <div class="dash-item">
+                <h3>Terms & Conditions</h3>
+                <p>Review our terms and policies to stay informed and protected.</p>
+                <a href="ToC.html">Read Terms</a>
+            </div>
+
+            <!-- Phishing Tool (If Relevant) -->
+            <div class="dash-item">
+                <h3>Phishing Tool</h3>
+                <p>Access the phishing testing tool if your account provides it. (Must be logged in)</p>
+                <a href="phishing_tool.html">Access Tool</a>
+            </div>
+
+            <!-- Phishing Tool (If Relevant) -->
+            <div class="dash-item">
+                <h3>Analytics</h3>
+                <p>Access your company's analytics. (Must be logged in)</p>
+                <a href="analytics.html">Access Tool</a>
+            </div>
         </div>
     </div>
-
-    <script>
-        // Pie Chart
-        const pieCtx = document.getElementById('pieChart').getContext('2d');
-        new Chart(pieCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Successful Attempts', 'Prevented Attempts'],
-                datasets: [{
-                    label: 'Phishing Attempts',
-                    data: [30, 70],
-                    backgroundColor: ['#ff6384', '#36a2eb'],
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-
-        // Bar Chart
-        const barCtx = document.getElementById('barChart').getContext('2d');
-        new Chart(barCtx, {
-            type: 'bar',
-            data: {
-                labels: ['HR', 'Finance', 'IT', 'Sales', 'Marketing'],
-                datasets: [{
-                    label: 'Risk Level',
-                    data: [12, 19, 3, 5, 2],
-                    backgroundColor: '#4CAF50',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-
-        // Line Chart
-        const lineCtx = document.getElementById('lineChart').getContext('2d');
-        new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                datasets: [{
-                    label: 'Training Progress',
-                    data: [65, 59, 80, 81, 56, 55],
-                    fill: false,
-                    borderColor: '#ff6384',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-
-        // Polar Area Chart
-        const polarCtx = document.getElementById('polarAreaChart').getContext('2d');
-        new Chart(polarCtx, {
-            type: 'polarArea',
-            data: {
-                labels: ['Fake Invoices', 'Free Gift Cards', 'Urgent Account Updates', 'Password Resets'],
-                datasets: [{
-                    label: 'Phishing Bait Types',
-                    data: [11, 16, 7, 14],
-                    backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
-    </script>
 </body>
 </html>
